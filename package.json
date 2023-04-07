@@ -1,0 +1,23 @@
+{
+  "name": "chatbotapiforjsonplay",
+  "version": "1.0.0",
+  "description": "Playing with Json for the chatbot app: Sprint 3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodeblackbox/chatBotApiForJsonPlay.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nodeblackbox/chatBotApiForJsonPlay/issues"
+  },
+  "homepage": "https://github.com/nodeblackbox/chatBotApiForJsonPlay#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

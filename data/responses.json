@@ -1,0 +1,10 @@
+{
+  "greetings": [
+    "Hello! How can I help you?",
+    "Hi there! What can I do for you today?"
+  ],
+  "farewells": [
+    "Goodbye! Have a great day!",
+    "Bye! Take care!"
+  ]
+}
