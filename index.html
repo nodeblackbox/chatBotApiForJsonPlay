@@ -14,38 +14,43 @@
   </style>
 </head>
 <body>
-  <h1>Add Chatbot Response</h1>
-  <form id="addResponseForm">
-    <label for="category">Category:</label>
-    <input type="text" id="category" name="category" required>
-    <br><br>
-    <label for="response">Response:</label>
-    <input type="text" id="response" name="response" required>
-    <br><br>
-    <button type="submit">Add Response</button>
-  </form>
-  <script>
-    document.getElementById('addResponseForm').addEventListener('submit', async (event) => {
-      event.preventDefault();
-      
-      const category = document.getElementById('category').value;
-      const response = document.getElementById('response').value;
-      
-      const responseJson = { category, response };
-      
-      try {
+    <h1>Add Chatbot Response</h1>
+    <form id="addResponseForm">
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" required>
+        <br><br>
+        <label for="response">Response:</label>
+        <input type="text" id="response" name="response" required>
+        <br><br>
+        <label for="apiKey">API Key:</label>
+        <input type="text" id="apiKey" name="apiKey" required>
+        <br><br>
+        <button type="submit">Add Response</button>
+    </form>
+    <script>
+        document.getElementById('addResponseForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    
+    const category = document.getElementById('category').value;
+    const response = document.getElementById('response').value;
+    const apiKey = document.getElementById('apiKey').value;
+    
+    const responseJson = { category, response };
+    
+    try {
         const result = await fetch('/api/chatbot/responses', {
-          method: 'POST',
-          headers: {
+        method: 'POST',
+        headers: {
             'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(responseJson),
+            'x-api-key': apiKey,
+        },
+        body: JSON.stringify(responseJson),
         });
         const data = await result.json();
         alert(data.message);
-      } catch (error) {
+    } catch (error) {
         alert('Error: Unable to add response');
-      }
+    }
     });
   </script>
 </body>

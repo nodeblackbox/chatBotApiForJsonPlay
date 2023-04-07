@@ -2,7 +2,19 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
 
+const apiKey = "APIKeyPlaceHolderDummyForNow123444";
+
 app.use(express.json());
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+function apiKeyMiddleware(req, res, next) {
+  const requestApiKey = req.get("x-api-key");
+
+  if (requestApiKey && requestApiKey === apiKey) {
+    next();
+  } else {
+    res.status(401).json({ message: "Invalid API key" });
+  }
+}
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 const fs = require("fs");
 const path = require("path");
@@ -12,7 +24,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-app.get("/api/chatbot/responses", (req, res) => {
+app.get("/api/chatbot/responses", apiKeyMiddleware, (req, res) => {
   const dataPath = path.join(__dirname, "data", "responses.json");
 
   fs.readFile(dataPath, "utf8", (err, data) => {
@@ -43,7 +55,7 @@ function updateJsonFile(filePath, updateFunction, callback) {
   });
 }
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-app.post("/api/chatbot/responses", (req, res) => {
+app.post("/api/chatbot/responses", apiKeyMiddleware, (req, res) => {
   const dataPath = path.join(__dirname, "data", "responses.json");
   const { category, response } = req.body;
 
