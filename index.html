@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Chatbot Response</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Add Chatbot Response</h1>
+  <form id="addResponseForm">
+    <label for="category">Category:</label>
+    <input type="text" id="category" name="category" required>
+    <br><br>
+    <label for="response">Response:</label>
+    <input type="text" id="response" name="response" required>
+    <br><br>
+    <button type="submit">Add Response</button>
+  </form>
+  <script>
+    document.getElementById('addResponseForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      
+      const category = document.getElementById('category').value;
+      const response = document.getElementById('response').value;
+      
+      const responseJson = { category, response };
+      
+      try {
+        const result = await fetch('/api/chatbot/responses', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(responseJson),
+        });
+        const data = await result.json();
+        alert(data.message);
+      } catch (error) {
+        alert('Error: Unable to add response');
+      }
+    });
+  </script>
+</body>
+</html>
