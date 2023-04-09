@@ -5,90 +5,47 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
+  <script src="sketch.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
     <meta charset="utf-8" />
-<div class="jimjam">
+<!-- <div class="jimjam">
     <script src="sketch.js"></script>
-</div>
+</div> -->
 
   <title>Add Chatbot Response</title>
   <style>
-    * {
-      box-sizing: border-box;
+    body {
+        margin: 0;
+        padding: 0;
     }
-    .jimjam canvas {
+    h1 {
+        color: white;
+        padding: 20px;
+    }
+  
+    .content {
+        background-color: rgba(255, 255, 255, 0.5);
+        padding: 20px;
+        width: 50%;
+        margin: auto;
+        text-align: center;
+        margin-top: 50px;
+        position: relative;
+    }
+    /* CSS for the P5.js canvas */
+    #myCanvas {
         position: fixed;
         top: 0;
         left: 0;
-        z-index: -1;
-    }
-    canvas {
-        display: block;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    h1, h2 {
-      color: #333;
-    }
-
-    form {
-      background-color: #f9f9f9;
-      border: 1px solid #e0e0e0;
-      padding: 2rem;
-      width: 100%;
-      max-width: 500px;
-      border-radius: 5px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    label {
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-    }
-
-    input {
-      padding: 0.5rem;
-      margin-bottom: 1.5rem;
-      border: 1px solid #e0e0e0;
-      border-radius: 3px;
-    }
-
-    button {
-      padding: 0.75rem 1.5rem;
-      background-color: #4CAF50;
-      color: #fff;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    button:hover {
-      background-color: #45a049;
-    }
-
-    form:not(:last-child) {
-      margin-bottom: 2rem;
+        z-index: 1; /* Set the z-index to a low value so the canvas stays behind other elements */
     }
   </style>
   <script src="sketch.js"></script>  
 </head>
 <body>
+<div class="content">
   <h1>Add Chatbot Response</h1>
   <form id="addResponseForm">
     <label for="category">Category:</label>
@@ -116,8 +73,7 @@
     <label for="registerPassword">Password:</label>
     <input type="password" id="registerPassword" name="password" required>
     <button type="submit">Register</button>
-  
-
+    </div>
     <script>
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -196,5 +152,7 @@
         }
     });
   </script>
+
+  
 </body>
 </html>
