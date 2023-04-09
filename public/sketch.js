@@ -1,15 +1,10 @@
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(400, 400);
   // Start AudioContext in response to user gesture
   document.addEventListener("click", function () {
     getAudioContext().resume();
   });
-  // canvas.parent("jimjam");
 }
-
-// function windowResized() {
-//   resizeCanvas(windowWidth, windowHeight);
-// }
 
 function draw() {
   background(220);

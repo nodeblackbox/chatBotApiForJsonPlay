@@ -36,6 +36,20 @@ function isLoggedIn(req, res, next) {
     res.status(401).json({ message: "Please log in to access this resource" });
   }
 }
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+// Serve static files from the "public" directory
+app.use(express.static("public"));
+
+// Define a route that serves an HTML page with a p5.js sketch
+app.get("/sketch", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "sketch.html"));
+});
+
+// app.get("/", (req, res) => { 
+//   res.sendFile(path.join(__dirname, "index.html"));
+// });
+
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 app.post("/api/register", async (req, res) => {
   const { username, email, password } = req.body;
